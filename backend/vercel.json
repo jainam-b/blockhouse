@@ -1,0 +1,22 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "backend/manage.py",
+        "use": "@vercel/python",
+        "config": {
+          "maxLambdaSize": "50mb",
+          "runtime": "python3.12",
+          "installCommand": "pip install -r backend/requirements.txt",
+          "startCommand": "python backend/manage.py runserver"
+        }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/backend/manage.py"
+      }
+    ]
+  }
+  
